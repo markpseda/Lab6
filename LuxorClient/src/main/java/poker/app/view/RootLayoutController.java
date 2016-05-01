@@ -107,8 +107,8 @@ public class RootLayoutController implements Initializable {
 		//	Write a method to return which is selected.. .check out getRuleName()
 
 		Menu mnuBet = new Menu();
-		mnuBet.setText("Pick Game");
-		mb.getMenus().add(0,mnuBet);
+		mnuBet.setText("Betting Rules");
+		mb.getMenus().add(1,mnuBet);
 				
 		ToggleGroup tglGrpBet = new ToggleGroup();
 		
@@ -116,11 +116,35 @@ public class RootLayoutController implements Initializable {
 		rmi.setId("PokerGame" + String.valueOf("No  Limit"));
 		rmi.setToggleGroup(tglGrpBet);
 		rmi.setSelected(true);
-		mnuGame.getItems().add(rmi);
+		mnuBet.getItems().add(rmi);
 		RadioMenuItem rmi1 = new RadioMenuItem("Pot Limit");
-		rmi1.setId("PokerGame" + String.valueOf("Pot  Limit"));
+		rmi1.setId("PokerGame" + String.valueOf("Pot Limit"));
 		rmi1.setToggleGroup(tglGrpBet);
-		mnuGame.getItems().add(rmi1);
+		mnuBet.getItems().add(rmi1);
+	}
+	
+	public String getBetRules()
+	{
+		String strBetID = null;
+		for (Menu m: mb.getMenus())
+		{
+			if (m.getText() == "Betting Rules")
+			{
+				for (MenuItem mi: m.getItems())
+				{
+					if (mi.getClass().equals(RadioMenuItem.class))
+					{
+						RadioMenuItem rmi = (RadioMenuItem)mi;
+						if (rmi.isSelected() == true)
+						{
+							strBetID = rmi.getId();
+							break;
+						}
+					}
+				}
+			}
+		}
+		return strBetID;
 	}
     
 	
