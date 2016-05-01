@@ -10,6 +10,7 @@ import java.util.Map;
 
 import exceptions.DeckException;
 import netgame.common.Hub;
+import poker.app.MainApp;
 import pokerBase.Action;
 import pokerBase.Card;
 import pokerBase.Deck;
@@ -75,10 +76,11 @@ public class PokerHub extends Hub {
 				//TODO - Lab #5 Do all the things you need to do to start a game!!
 				
 				//	Determine which game is selected (from RootTableController)
-				//		1 line of code
+				eGame game = act.geteGame();
+				
 				
 				//	Get the Rule based on the game selected
-				//		1 line of code
+				Rule rule = new Rule(game);
 
 			
 				//	The table should eventually allow multiple instances of 'GamePlay'...
