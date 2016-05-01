@@ -236,16 +236,51 @@ public class PokerTableController {
 
 	public void Handle_GameState(GamePlay HubGamePlay) 
 	{
-		/*
-		imgViewDealerButtonPos1.setVisible(false);
-		imgViewDealerButtonPos2.setVisible(false);
-		imgViewDealerButtonPos3.setVisible(false);
-		imgViewDealerButtonPos4.setVisible(false);
-		*/
+		Iterator it = HubGamePlay.getGamePlayers().entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			Player p = (Player) pair.getValue();
+			switch (p.getiPlayerPosition()) {
+			case 1:
+				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+					imgViewDealerButtonPos1.setVisible(true);
+					
+				} else {
+					imgViewDealerButtonPos1.setVisible(false);
+				}
+				break;
+			case 2:
+				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+					imgViewDealerButtonPos2.setVisible(true);
+					
+				} else {
+					imgViewDealerButtonPos2.setVisible(false);
+				}
+				break;
+			case 3:
+				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+					imgViewDealerButtonPos3.setVisible(true);
+					
+				} else {
+					imgViewDealerButtonPos3.setVisible(false);
+				}
+				break;
+			case 4:
+				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+					imgViewDealerButtonPos4.setVisible(true);
+				
+					
+				} else {
+					imgViewDealerButtonPos4.setVisible(false);
+				}
+				break;
+			}
+		}
+	}
+		
 
 		//TODO - Lab #5: Check to see if you're the dealer..  If you are, make the imgViewDealerButtonX visible = true
 		
-	}
 	@FXML
 	void btnStart_Click(ActionEvent event) {
 		Action act = new Action(eAction.StartGame, mainApp.getPlayer());		
