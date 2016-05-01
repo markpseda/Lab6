@@ -101,7 +101,7 @@ public class PokerHub extends Hub {
 				//		will have number of jokers... wild cards...
 				//		1 line of code
 				Deck gameDeck = new Deck(rule.GetNumberOfJokers(),rule.GetWildCards());
-				//newGamePlay.setGameDeck(gameDeck);
+				newGamePlay.setGameDeck(gameDeck);
 				//	Determine the order of players and add each player in turn to GamePlay.lnkPlayerOrder
 				//	Example... four players playing...  seated in Position 1, 2, 3, 4
 				//			Dealer = Position 2
@@ -110,14 +110,16 @@ public class PokerHub extends Hub {
 				//			Dealer = Position 4
 				//			Order should be 1, 2, 4
 				//		< 10 lines of code
-				
+				int dealerPos = firstDealer.getiPlayerPosition();
+				int[] playerOrder = newGamePlay.GetOrder(dealerPos);
 				
 				//	Set PlayerID_NextToAct in GamePlay (next player after Dealer)
 				//		1 line of code
+				newGamePlay.setPlayerNextToAct(newGamePlay.getPlayerByPosition(newGamePlay.NextPosition(dealerPos, playerOrder)));
 				
 
 				//	Send the state of the game back to the players
-				sendToAll(HubGamePlay);
+				sendToAll(newGamePlay);
 				break;
 			case Deal:
 				
