@@ -242,7 +242,7 @@ public class PokerTableController {
 			Player p = (Player) pair.getValue();
 			switch (p.getiPlayerPosition()) {
 			case 1:
-				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
 					imgViewDealerButtonPos1.setVisible(true);
 					
 				} else {
@@ -250,7 +250,7 @@ public class PokerTableController {
 				}
 				break;
 			case 2:
-				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
 					imgViewDealerButtonPos2.setVisible(true);
 					
 				} else {
@@ -258,7 +258,7 @@ public class PokerTableController {
 				}
 				break;
 			case 3:
-				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
 					imgViewDealerButtonPos3.setVisible(true);
 					
 				} else {
@@ -266,7 +266,7 @@ public class PokerTableController {
 				}
 				break;
 			case 4:
-				if (p.getiPlayerPosition() == (HubGamePlay.getDealerPos())) {
+				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
 					imgViewDealerButtonPos4.setVisible(true);
 				
 					

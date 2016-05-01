@@ -20,7 +20,6 @@ public class GamePlay implements Serializable   {
 	private UUID GameDealer = null;
 	private int[] iActOrder = null;
 	private Player PlayerNextToAct = null;
-	private int dealerPos;
 	
 	
 	public GamePlay(Rule rle, UUID GameDealerID)
@@ -171,13 +170,7 @@ public class GamePlay implements Serializable   {
 	}
 	*/
 
-	public int getDealerPos() {
-		return dealerPos;
-	}
 
-	public void setDealerPos(int dealerPos) {
-		this.dealerPos = dealerPos;
-	}
 	
 /*	public GamePlayPlayerHand FindPlayerGame(GamePlay gme, Player p)
 	{
