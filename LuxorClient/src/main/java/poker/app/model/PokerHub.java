@@ -88,19 +88,20 @@ public class PokerHub extends Hub {
 				//		For the first instance of GamePlay, pick a random player to be the 
 				//		'Dealer'...  
 				//		< 5 lines of code to pick random player
-				
+				Player firstDealer = HubPokerTable.PickRandomPlayerAtTable();
 				
 				//	Start a new instance of GamePlay, based on rule set and Dealer (Player.PlayerID)
 				//		1 line of code
-				
+				GamePlay newGamePlay = new GamePlay(rule, firstDealer.getPlayerID());
 				
 				//	There are 1+ players seated at the table... add these players to the game
 				//		< 5 lines of code
-				
+				newGamePlay.setGamePlayers(HubPokerTable.getHashPlayers());
 				//	GamePlay has a deck...  create the deck based on the game's rules (the rule
 				//		will have number of jokers... wild cards...
 				//		1 line of code
-
+				Deck gameDeck = new Deck(rule.GetNumberOfJokers(),rule.GetWildCards());
+				//newGamePlay.setGameDeck(gameDeck);
 				//	Determine the order of players and add each player in turn to GamePlay.lnkPlayerOrder
 				//	Example... four players playing...  seated in Position 1, 2, 3, 4
 				//			Dealer = Position 2
