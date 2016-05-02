@@ -70,7 +70,7 @@ public class PokerHub extends Hub {
 				break;
 				
 			case StartGame:
-				//System.out.println("Starting Game!");
+				System.out.println("Starting Game!");
 				resetOutput();
 				
 				//TODO - Lab #5 Do all the things you need to do to start a game!!
@@ -89,19 +89,19 @@ public class PokerHub extends Hub {
 				//		'Dealer'...  
 				//		< 5 lines of code to pick random player
 				Player firstDealer = HubPokerTable.PickRandomPlayerAtTable();
-				
+				System.out.println("Random Player: " + firstDealer.getiPlayerPosition());
 				//	Start a new instance of GamePlay, based on rule set and Dealer (Player.PlayerID)
 				//		1 line of code
-				GamePlay newGamePlay = new GamePlay(rule, firstDealer.getPlayerID());
+				HubGamePlay = new GamePlay(rule, firstDealer.getPlayerID());
 				
 				//	There are 1+ players seated at the table... add these players to the game
 				//		< 5 lines of code
-				newGamePlay.setGamePlayers(HubPokerTable.getHashPlayers());
+				HubGamePlay.setGamePlayers(HubPokerTable.getHashPlayers());
 				//	GamePlay has a deck...  create the deck based on the game's rules (the rule
 				//		will have number of jokers... wild cards...
 				//		1 line of code
 				Deck gameDeck = new Deck(rule.GetNumberOfJokers(),rule.GetWildCards());
-				newGamePlay.setGameDeck(gameDeck);
+				HubGamePlay.setGameDeck(gameDeck);
 				//	Determine the order of players and add each player in turn to GamePlay.lnkPlayerOrder
 				//	Example... four players playing...  seated in Position 1, 2, 3, 4
 				//			Dealer = Position 2
@@ -111,18 +111,18 @@ public class PokerHub extends Hub {
 				//			Order should be 1, 2, 4
 				//		< 10 lines of code
 				int dealerPos = firstDealer.getiPlayerPosition();
-				int[] playerOrder = newGamePlay.GetOrder(dealerPos);
+				int[] playerOrder = GamePlay.GetOrder(dealerPos);
+				HubGamePlay.setiActOrder(playerOrder);
 				
 				//	Set PlayerID_NextToAct in GamePlay (next player after Dealer)
 				//		1 line of code
-				newGamePlay.setPlayerNextToAct(newGamePlay.getPlayerByPosition(newGamePlay.NextPosition(dealerPos, playerOrder)));
+				HubGamePlay.setPlayerNextToAct(HubGamePlay.getPlayerByPosition(HubGamePlay.NextPosition(dealerPos, playerOrder)));
 				
 
 				//	Send the state of the game back to the players
-				sendToAll(newGamePlay);
+				sendToAll(HubGamePlay);
 				break;
 			case Deal:
-				
 				/*
 				int iCardstoDraw[] = HubGamePlay.getRule().getiCardsToDraw();
 				int iDrawCount = iCardstoDraw[iDealNbr];
@@ -135,8 +135,9 @@ public class PokerHub extends Hub {
 						e.printStackTrace();
 					}
 				}
-*/
-				break;
+				*/
+				break; 
+				
 			}
 		}
 

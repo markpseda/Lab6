@@ -188,6 +188,7 @@ public class PokerTableController {
 			switch (p.getiPlayerPosition()) {
 			case 1:
 				if (p.getPlayerID().equals(mainApp.getPlayer().getPlayerID())) {
+					System.out.println("1 is Dealer");
 					btnPos1SitLeave.setVisible(true);
 					btnPos2SitLeave.setVisible(false);
 					btnPos3SitLeave.setVisible(false);
@@ -199,6 +200,7 @@ public class PokerTableController {
 				break;
 			case 2:
 				if (p.getPlayerID().equals(mainApp.getPlayer().getPlayerID())) {
+					System.out.println("2 is Dealer");
 					btnPos1SitLeave.setVisible(false);
 					btnPos2SitLeave.setVisible(true);
 					btnPos3SitLeave.setVisible(false);
@@ -210,6 +212,7 @@ public class PokerTableController {
 				break;
 			case 3:
 				if (p.getPlayerID().equals(mainApp.getPlayer().getPlayerID())) {
+					System.out.println("3 is Dealer");
 					btnPos1SitLeave.setVisible(false);
 					btnPos2SitLeave.setVisible(false);
 					btnPos3SitLeave.setVisible(true);
@@ -221,6 +224,7 @@ public class PokerTableController {
 				break;
 			case 4:
 				if (p.getPlayerID().equals(mainApp.getPlayer().getPlayerID())) {
+					System.out.println("4 is Dealer");
 					btnPos1SitLeave.setVisible(false);
 					btnPos2SitLeave.setVisible(false);
 					btnPos3SitLeave.setVisible(false);
@@ -244,32 +248,39 @@ public class PokerTableController {
 			case 1:
 				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
 					imgViewDealerButtonPos1.setVisible(true);
-					
+					imgViewDealerButtonPos2.setVisible(false);
+					imgViewDealerButtonPos3.setVisible(false);
+					imgViewDealerButtonPos4.setVisible(false);
 				} else {
 					imgViewDealerButtonPos1.setVisible(false);
 				}
 				break;
 			case 2:
 				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
+					imgViewDealerButtonPos1.setVisible(false);
 					imgViewDealerButtonPos2.setVisible(true);
-					
+					imgViewDealerButtonPos3.setVisible(false);
+					imgViewDealerButtonPos4.setVisible(false);
 				} else {
 					imgViewDealerButtonPos2.setVisible(false);
 				}
 				break;
 			case 3:
 				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
+					imgViewDealerButtonPos1.setVisible(false);
+					imgViewDealerButtonPos2.setVisible(false);
 					imgViewDealerButtonPos3.setVisible(true);
-					
+					imgViewDealerButtonPos4.setVisible(false);
 				} else {
 					imgViewDealerButtonPos3.setVisible(false);
 				}
 				break;
 			case 4:
 				if (HubGamePlay.getGameDealer() == p.getPlayerID()) {
+					imgViewDealerButtonPos1.setVisible(false);
+					imgViewDealerButtonPos2.setVisible(false);
+					imgViewDealerButtonPos3.setVisible(false);
 					imgViewDealerButtonPos4.setVisible(true);
-				
-					
 				} else {
 					imgViewDealerButtonPos4.setVisible(false);
 				}
